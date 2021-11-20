@@ -1,0 +1,23 @@
+<h5>Mensajes de <small>{{ user.name }}</small></h5>
+
+
+<div style="height: 300px;">
+
+    <ng-container *ngFor="let m of messages" >
+        <div *ngIf="m.from == user._id">
+            <span class="badge rounded-pill bg-primary p-2 mt-1">{{ m.message }}</span>
+        </div>
+        <div class="text-end mt-1" *ngIf="m.from != user._id">
+            <span class="badge rounded-pill p-2" style="background-color: #86134F;">{{ m.message }}</span>
+        </div>
+    </ng-container>
+    
+    
+
+</div>
+
+<input type="text"
+    class="form-control" 
+    #inputMessage
+    (keyup.enter)="enviar( inputMessage.value )"
+    style="background-color: #e0e0e0 !important;">

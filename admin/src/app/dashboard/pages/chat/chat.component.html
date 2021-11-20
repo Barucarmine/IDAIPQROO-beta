@@ -1,0 +1,41 @@
+
+
+
+<h2>Chat</h2>
+
+<hr>
+
+
+
+<div class="row">
+
+    <div class="col-4">
+        <h5>Usuarios</h5>
+
+        <div class="list-group mb-2" *ngFor="let u of users">
+            <li (click)="asignarUser( u )"
+                class="list-group-item d-flex justify-content-between align-items-start" style="cursor: pointer;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{ u.name }}</div>
+                  <div>{{ u.email }}</div>
+                </div>
+                <span class="ml-2"><i style="color: red; font-size: 10px;" 
+                    [ngClass]="{'green': u.online }"
+                    class="fas fa-circle"></i></span>
+              </li>
+              
+          </div>
+    </div>
+
+
+
+
+    <div class="col-8 shadow-sm p-3" style="height: 400px;" *ngIf="userSelected">
+       <app-chat-container [user]="userSelected"></app-chat-container>
+    </div>
+
+</div>
+
+
+
+

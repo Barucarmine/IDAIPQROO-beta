@@ -1,0 +1,79 @@
+
+
+<h3>Asignar reporte</h3>
+<hr>
+
+<br>
+<h5>Asigna el reporte a una Institución</h5>
+
+
+
+<div class="row">
+
+
+    <div class="col-6" *ngIf="report">
+
+        <img 
+        [src]="report.image | image:'reports'" 
+        alt=""
+        class="my-4 img-thumbnail"
+        style="width: 100%;">
+
+        <div class="row">
+            <div class="col-5"><p><strong>Titulo:</strong></p></div>
+            <div class="col-7">{{ report.title }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"><p><strong>Descripción:</strong></p></div>
+            <div class="col-12 mb-2">{{ report.description }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-5"><p><strong>Municipio:</strong></p></div>
+            <div class="col-7">{{ report.municipality }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-5"><p><strong>Colonia:</strong></p></div>
+            <div class="col-7">{{ report.colony }}</div>
+        </div>
+
+        <div *ngIf="!report.anonymous">
+            <div  class="col-12 "><p style="margin: 0 !important;"><strong>Usuario que reporto</strong></p></div>
+            <div class="col-12 mb-2">{{ report.user.name }}</div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="col-6">
+            <div class="mb-3">
+
+            <form autocomplete="off"
+                (ngSubmit)="asignar()"
+                [formGroup]="myForm">
+              <label  class="form-label">Institución Responsable</label>
+              
+              <select class="form-select" 
+                    aria-label="Default select example"
+                    formControlName="institute">
+                    <option value="">Seleccione una institución</option>
+                <ng-container *ngFor="let i of institutes">
+                    <option [value]="i._id">{{ i.name }}</option>
+                </ng-container>
+              </select>
+
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary mt-3">Asignar</button>
+            </form>
+            </div>
+        
+    </div>
+    
+
+
+</div>

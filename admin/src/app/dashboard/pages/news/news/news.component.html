@@ -1,0 +1,46 @@
+<h2>
+
+    Novedades</h2>
+
+<hr>
+
+<div class="d-grid d-md-flex justify-content-end">
+    <a class="btn btn-primary" routerLink="/new/add">Agregar</a>
+</div>
+
+<br>
+
+
+
+<ng-container *ngIf="!isLoading ">
+
+
+
+    <div *ngIf="news.length > 0; else vacio" class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 mt-3">
+        <div class="col" *ngFor="let n of news">
+            <div class="card">
+                <img [src]="n.image | image:'news'" class="card-img-top" [alt]="n.image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ n.text }}</h5>
+
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div class="d-grid d-md-flex justify-content-end">
+                        <a class="btn btn-outline-primary mx-2" [routerLink]="['/new/edit', n._id ]">Editar</a>
+                        <a class="btn btn-outline-primary" [routerLink]="['/new', n._id ]">Ver</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #vacio>
+        <div class="col mt-5 text-center">
+            <h6>No hay Novedades :(</h6>
+        </div>
+    </ng-template>
+
+
+
+
+</ng-container>

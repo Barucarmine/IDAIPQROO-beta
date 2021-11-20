@@ -1,0 +1,13 @@
+
+
+<h2>Estadisticas Reportes <small>Por Municipio</small></h2>
+<hr>
+
+<div class="row">
+
+  <div class="col-6 mt-5" *ngFor="let m of municipios">
+    <app-grafica-categories  [nombreMunicipio]="m"></app-grafica-categories>
+  </div>
+
+ 
+</div>

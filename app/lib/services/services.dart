@@ -1,0 +1,11 @@
+export 'package:idaipqroo/services/auth_service.dart';
+export 'package:idaipqroo/services/reports_service.dart';
+export 'package:idaipqroo/services/institute_service.dart';
+export 'package:idaipqroo/services/colony_service.dart';
+export 'package:idaipqroo/services/search_service.dart';
+export 'package:idaipqroo/services/chat_service.dart';
+export 'package:idaipqroo/services/idaip_service.dart';
+export 'package:idaipqroo/services/servicio_service.dart';
+export 'package:idaipqroo/services/user_report_service.dart';
+export 'package:idaipqroo/services/news_service.dart';
+export 'package:idaipqroo/services/tips_services.dart';

@@ -1,0 +1,43 @@
+<h2>
+    Eventos</h2>
+
+<hr>
+
+<div class="d-grid d-md-flex justify-content-end">
+    <a class="btn btn-primary" routerLink="/event/add">Agregar</a>
+</div>
+
+<br>
+
+
+
+<ng-container *ngIf="!isLoading">
+
+
+
+    <div *ngIf="events.length > 0; else vacio" class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 mt-3">
+        <div class="col" *ngFor="let event of events">
+            <div class="card">
+                <img [src]="event.image | image:'tips'" class="card-img-top" [alt]="event.image">
+                <div class="card-body">
+                    <p class="card-text">{{ event.title }}</p>
+                    <div class="d-grid d-md-flex justify-content-end">
+                        <a class="btn btn-outline-primary mx-2" [routerLink]="['/event/edit', event._id ]">Editar</a>
+                        <a class="btn btn-outline-primary" [routerLink]="['/event', event._id ]">Ver</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #vacio>
+        <div class="col mt-5 text-center">
+            <h6>No hay Eventos c:</h6>
+        </div>
+    </ng-template>
+
+
+
+
+</ng-container>

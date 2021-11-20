@@ -1,0 +1,32 @@
+
+<h5>{{ nombreMunicipio }}</h5>
+
+<div *ngIf="totalReports > 0">
+
+<h6>Total Reportes <span>{{ totalReports }}</span></h6>
+<br>
+
+    <div class="col">
+      <div class="chart">
+        <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div>
+
+
+
+    <div *ngIf="totalReports == 0">
+  
+      <h6>Sin reportes</h6>
+      
+    <div>
+      
+

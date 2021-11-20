@@ -1,0 +1,39 @@
+
+
+<h3>Reportes Pendientes...</h3>
+<hr>
+
+
+<div class="row text-center mt-4" *ngIf="services.length == 0">
+    <h6>No hay reportes pendientes</h6>
+  </div>
+  
+  
+  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 mt-3" *ngIf="services.length > 0">
+      <div class="col" *ngFor="let service of services">
+        <div class="card">
+          <img [src]="service.report.image | image:'reports'" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{service.report.title}}</h5>
+            <h6 class="card-title">status: <span 
+                class="badge"
+                [ngClass]="{'bg-warning': service.status == 'PROCESS', 'bg-danger': service.status == 'CANCELLED', 'bg-success': service.status == 'FINALIZED'}">{{ service.status == 'FINALIZED' ? 'Finalizado'
+              :  service.status == 'CANCELLED' ? 'Cancelado' : 'En proceso' }}</span></h6>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <div class="row">
+              <div class="col-4">
+                <img [src]="service.institute.image | image:'institutes'" class="card-img-top" width="50" alt="...">
+              </div>
+              <div class="col-8">
+                <p class="m-0" style="font-size: 12px !important;">{{ service.institute.name }}</p>
+              </div>
+            </div>
+            
+            <div class="d-grid d-md-flex justify-content-end">
+              <a class="btn btn-outline-primary" [routerLink]="['/my-report', service._id ]">Ver...</a>
+            </div>
+  
+        </div>
+      </div>
+    </div>
+  

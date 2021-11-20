@@ -1,0 +1,150 @@
+
+
+<h2>{{ title }}</h2>
+
+<hr>
+
+
+
+
+<div class="row mb-5">
+
+<div class="col-md-6 mb-3 mb-md-0">
+    
+    <div class="mb-3">
+        <label for="inputName" 
+                class="form-label">Nombre</label>
+        <input type="text" 
+            class="form-control" 
+            [(ngModel)]="institute.name"
+            required="true"
+            id="inputName" 
+            placeholder="Nombre de la institución">
+    </div>
+
+
+    <div class="mb-3">
+        <label for="inputManager" 
+                class="form-label">Encargado</label>
+        <input type="text" 
+            class="form-control" 
+            [(ngModel)]="institute.manager"
+            id="inputManager" 
+            placeholder="Nombre del encargado">
+    </div>
+
+
+      <div class="mb-3">
+        <label for="descriptionInput" 
+        class="form-label">Descripción</label>
+        <textarea class="form-control" 
+            [(ngModel)]="institute.description"
+            id="descriptionInput" 
+            placeholder="Escribe una descripción"
+            rows="3">
+        </textarea>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="municipioInput" 
+        class="form-label">Municipio</label>
+        <select class="form-select"
+                [(ngModel)]="institute.municipality"
+                aria-label="Default select example">
+            <option value="">Seleccione municipio</option>
+            <ng-container *ngFor="let m of municipalities">
+              <option [value]="m">{{ m }}</option>
+            </ng-container>
+        </select>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="inputAdress" 
+                class="form-label">Dirección</label>
+        <input type="text" 
+            class="form-control" 
+            id="inputAdress" 
+            [(ngModel)]="institute.adress"
+            placeholder="Dirección de la institución">
+        </div>
+
+
+    <ng-container *ngIf="!institute._id">
+
+        <hr>
+
+        <div class="mb-3">
+            <label for="inputUsername" 
+                    class="form-label">Usuario</label>
+            <input type="text" 
+                class="form-control" 
+                id="inputUsername" 
+                [(ngModel)]="form.email"
+                placeholder="Usuario">
+        </div>
+
+
+
+
+        <div class="mb-3">
+            <label for="inputPassword" 
+                    class="form-label">Contraseña</label>
+            <input type="password" 
+                class="form-control" 
+                [(ngModel)]="form.password"
+                id="inputPassword" 
+                placeholder="Contraseña">
+        </div>
+
+        <div class="d-grid grap">
+            <button class="btn btn-primary" 
+                type="buttun"
+                (click)="guardar()">
+                {{ ( institute._id )? 'Actualizar' : 'Crear' }}
+            </button>
+        </div>
+
+    </ng-container>
+
+
+    </div>
+
+
+
+<div *ngIf="institute._id" class="col-md-6">
+
+    <div class="text-center">
+
+        <img 
+            *ngIf="!archivoTemporal"
+            [src]="institute?.image | image:'institutes'" 
+            [alt]="institute?.name"
+            class=""
+            width="400">
+        <img 
+            *ngIf="archivoTemporal"
+            [src]="archivoTemporal" 
+            [alt]="institute?.name"
+            class=""
+            width="400">
+    </div>
+
+    <div class="mb-3 mt-3">
+        <input class="form-control" 
+            type="file"
+            (change)="changeFile( $event.target )">
+      </div>
+
+    <div class="d-grid grap">
+        <button class="btn btn-success" 
+            (click)="uploadImage()"
+            type="button"
+            [disabled]="!archivoSubir">Subir imagen</button>
+    </div>
+
+</div>
+
+
+</div>

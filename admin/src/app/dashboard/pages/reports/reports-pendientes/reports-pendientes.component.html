@@ -1,0 +1,32 @@
+
+
+<h2>Reportes por asignar...</h2>
+
+<hr>
+
+
+
+
+<div class="row text-center mt-4" *ngIf="reports.length == 0">
+  <h6>No hay reportes pendientes por asignar</h6>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 mt-3" *ngIf="reports.length > 0">
+    <div class="col" *ngFor="let report of reports">
+      <div class="card">
+        <img [src]="report.image | image:'reports'" class="card-img-top" [alt]="report.image">
+        <div class="card-body">
+          <h5 class="card-title">{{ report.title }}</h5>
+          <h6 class="card-subtitle">{{ report.category }}</h6>
+          <p class="card-text">{{ report.description }}</p>
+
+          <div class="d-grid d-md-flex justify-content-end">
+            <a class="btn btn-outline-primary" [routerLink]="['/pending-report', report._id ]">Asignar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+ 

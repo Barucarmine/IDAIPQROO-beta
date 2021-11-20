@@ -1,0 +1,72 @@
+<h2>
+
+    {{ title }}</h2>
+
+<hr>
+
+
+
+
+<div class="row mb-5">
+
+    <div class="col-md-6 mb-3 mb-md-0">
+
+        <div class="mb-3">
+            <label for="inputName" class="form-label">Titulo</label>
+            <input type="text" class="form-control" [(ngModel)]="new.text" required="true" id="inputName" placeholder="Escribe una nueva idea">
+        </div>
+
+        <div class="mb-3">
+            <label for="descriptionInput" class="form-label">Descripción</label>
+            <textarea class="form-control" [(ngModel)]="new.descripcion" id="descriptionInput" placeholder="Escribe una descripción" rows="3">
+            </textarea>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ng-container *ngIf="!new._id">
+
+
+            <div class="d-grid grap">
+                <button class="btn btn-primary" type="buttun" (click)="guardar()">
+                {{ ( new._id )? 'Actualizar' : 'Crear' }}
+            </button>
+            </div>
+
+        </ng-container>
+
+
+    </div>
+
+
+
+    <div *ngIf="new._id" class="col-md-6">
+
+        <div class="text-center">
+
+            <img *ngIf="!archivoTemporal" [src]="new?.image | image:'tips'" [alt]="new?.text" class="" width="400">
+            <img *ngIf="archivoTemporal" [src]="archivoTemporal" [alt]="new?.text" class="" width="400">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <input class="form-control" type="file" (change)="changeFile( $event.target )">
+        </div>
+
+        <div class="d-grid grap">
+            <button class="btn btn-success" (click)="uploadImage()" type="button" [disabled]="!archivoSubir">Subir imagen</button>
+        </div>
+
+    </div>
+
+
+</div>

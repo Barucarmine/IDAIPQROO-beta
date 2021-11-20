@@ -1,0 +1,42 @@
+
+
+<h2>{{ institute?.name }}</h2>
+<hr>
+
+<img [src]="institute?.image | image:'institutes' " 
+      [alt]="institute?.name"
+      height="200">
+
+    <div class="row mt-4">
+        <div class="col-5"><p><strong>Persona a cargo:</strong></p></div>
+        <div class="col-7">{{ institute?.manager }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-12"><p><strong>Descripción:</strong></p></div>
+      <div class="col-12 mb-2">{{ institute?.description }}</div>
+  </div>
+
+
+
+<br>
+<hr>
+
+<h4>Total Reportes <span>{{ totalReports }}</span></h4>
+<br>
+
+<div>
+    <div class="col-md-6">
+      <div class="chart">
+        <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div>

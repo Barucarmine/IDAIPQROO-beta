@@ -1,0 +1,85 @@
+
+
+<h3>Titulo del reporte</h3>
+
+
+<div class="row">
+
+
+    <div class="col-6" *ngIf="service">
+
+        <img 
+        [src]="service.report.image | image:'reports'" 
+        alt=""
+        class="my-4 img-thumbnail"
+        style="width: 100%;">
+
+        <div class="row">
+            <div class="col-5"><p><strong>Titulo:</strong></p></div>
+            <div class="col-7">{{ service.report.title }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"><p><strong>Descripción:</strong></p></div>
+            <div class="col-12 mb-2">{{ service.report.description }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-5"><p><strong>Municipio:</strong></p></div>
+            <div class="col-7">{{ service.report.municipality }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-5"><p><strong>Colonia:</strong></p></div>
+            <div class="col-7">{{ service.report.colony }}</div>
+        </div>
+
+        <div *ngIf="!service.report.anonymous">
+            <div  class="col-12 "><p style="margin: 0 !important;"><strong>Usuario que reporto</strong></p></div>
+            <div class="col-12 mb-2">{{ service.report.user.name }}</div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="col-6">
+            <div class="mb-3">
+
+            <form autocomplete="off"
+                (ngSubmit)="actualizar()"
+                [formGroup]="myForm">
+              <label  class="form-label">Ultima actualización</label>
+              
+              <select class="form-select" 
+                    aria-label="Default select example"
+                    formControlName="status">
+                    <option value="">Seleccionar status</option>
+                    <option [value]="'PROCESS'">En proceso</option>
+                    <option [value]="'FINALIZED'">Finalizado</option>
+                    <option [value]="'CANCELLED'">Cancelado</option>
+              </select>
+
+
+              <div class="form-floating mt-3">
+                <textarea class="form-control" 
+                    placeholder="Escribe aquí.." 
+                    id="floatingTextarea2" 
+                    style="height: 100px"
+                    formControlName="observations">
+                </textarea>
+                <label for="floatingTextarea2">Observaciones</label>
+              </div>
+
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary mt-3">Actualizar</button>
+            </form>
+            </div>
+        
+    </div>
+    
+
+
+</div>

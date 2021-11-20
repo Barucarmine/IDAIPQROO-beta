@@ -1,0 +1,15 @@
+
+.bg-purple {
+    background-color: #5E35B1;
+    color: white;
+}
+
+
+.active {
+    font-weight: bold !important;
+}
+
+
+a.dropdown-item.active {
+    background-color: transparent;
+}

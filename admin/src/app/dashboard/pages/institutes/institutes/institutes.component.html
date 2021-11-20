@@ -1,0 +1,66 @@
+
+
+<h2>Instituciones Públicas</h2>
+
+<hr>
+
+<div class="d-grid d-md-flex justify-content-end">
+    <a class="btn btn-primary" routerLink="/institute/add">Agregar</a>
+</div>
+
+<br>
+
+
+<div class="row d-flex justify-content-end">
+    <div class="col-md-4 mt-3 mt-md-0">
+        <select class="form-select" #selectMunicipality (change)="changeMunicipality( selectMunicipality.value )" aria-label="Default select example">
+            <option value="">Seleccione municipio</option>
+            <ng-container *ngFor="let m of municipalities">
+              <option [value]="m">{{ m }}</option>
+            </ng-container>
+        </select>
+    </div>
+</div>
+
+
+
+<div class="row text-center mt-4" *ngIf="!municipalitySeleccted">
+  <h6>Seleccione un municipio.</h6>
+</div>
+
+
+
+
+<ng-container *ngIf="!isLoading && municipalitySeleccted" >
+    
+  
+  
+  <div *ngIf="institutes.length > 0; else vacio" class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 mt-3">
+    <div class="col" *ngFor="let institute of institutes">
+      <div class="card">
+        <img  [src]="institute.image | image:'institutes'" class="card-img-top" [alt]="institute.image">
+        <div class="card-body">
+          <h5 class="card-title">{{ institute.name }}</h5>
+          <h6 class="card-title">{{ institute?.siglas }}</h6>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>      
+          <div class="d-grid d-md-flex justify-content-end">
+            <a class="btn btn-outline-primary mx-2" [routerLink]="['/institute/edit', institute._id ]">Editar</a>
+            <a class="btn btn-outline-primary" [routerLink]="['/institute', institute._id ]">Ver</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #vacio>
+    <div class="col mt-5 text-center">
+      <h6>No hay instituciones :(</h6>
+    </div>
+  </ng-template>
+  
+     
+
+
+</ng-container>
+
